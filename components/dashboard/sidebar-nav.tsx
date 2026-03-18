@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Home,
-  Hammer,
+  AddressBook,
+  HandCoins,
   Settings,
-  Users,
 } from "lucide-react";
 import {
   Collapsible,
@@ -16,6 +16,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
+// Revamped navigation for Relatix CRM: Overview, Contacts, Deals, Settings
 type NavItem = {
   label: string;
   href: string;
@@ -25,20 +26,16 @@ type NavItem = {
 
 const sections: { title: string; items: NavItem[] }[] = [
   {
-    title: "Platform",
+    title: "Relatix",
     items: [
-      { label: "Overview", href: "/dashboard", icon: Home },
-      {
-        label: "Feature",
-        href: "/dashboard/feature",
-        icon: Hammer,
-      },
+      { label: "Overview", href: "/dashboard/overview", icon: Home },
+      { label: "Contacts", href: "/dashboard/contacts", icon: AddressBook },
+      { label: "Deals", href: "/dashboard/deals", icon: HandCoins },
     ],
   },
   {
     title: "Account",
     items: [
-      { label: "Team", href: "/dashboard/team", icon: Users },
       { label: "Settings", href: "/dashboard/settings", icon: Settings },
     ],
   },
@@ -93,9 +90,16 @@ function NavSection({
   defaultOpen: boolean;
 }) {
   function checkActive(href: string) {
-    if (href === "/dashboard") return pathname === "/dashboard";
-    if (href === "#") return false;
-    return pathname.startsWith(href);
+    // Mark navigation as active for exact and subpage matches
+    if (href === "/dashboard/overview")
+      return pathname === "/dashboard/overview";
+    if (href === "/dashboard/contacts")
+      return pathname === "/dashboard/contacts";
+    if (href === "/dashboard/deals")
+      return pathname === "/dashboard/deals";
+    if (href === "/dashboard/settings")
+      return pathname.startsWith("/dashboard/settings");
+    return false;
   }
 
   return (
