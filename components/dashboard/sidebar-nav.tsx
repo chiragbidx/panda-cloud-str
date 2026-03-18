@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Home,
-  AddressBook,
+  Contacts,
   HandCoins,
   Settings,
 } from "lucide-react";
@@ -29,7 +29,7 @@ const sections: { title: string; items: NavItem[] }[] = [
     title: "Relatix",
     items: [
       { label: "Overview", href: "/dashboard/overview", icon: Home },
-      { label: "Contacts", href: "/dashboard/contacts", icon: AddressBook },
+      { label: "Contacts", href: "/dashboard/contacts", icon: Contacts },
       { label: "Deals", href: "/dashboard/deals", icon: HandCoins },
     ],
   },
