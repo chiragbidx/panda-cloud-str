@@ -1,10 +1,5 @@
 "use client";
 
-import { DashboardContent } from "@/components/dashboard/dashboard-content";
-
-// Purpose: Client UI for /dashboard.
-// Use this file for interactive/dashboard presentation logic.
-
 type ClientProps = {
   greeting: string;
   firstName: string;
@@ -12,9 +7,11 @@ type ClientProps = {
 
 export default function Client({ greeting, firstName }: ClientProps) {
   return (
-    <DashboardContent
-      greeting={greeting}
-      firstName={firstName}
-    />
+    <div className="space-y-2">
+      <h1 className="text-3xl font-bold tracking-tight">{greeting}</h1>
+      <p className="text-muted-foreground text-lg">
+        Your team’s hub for managing contacts and deals.
+      </p>
+    </div>
   );
 }
